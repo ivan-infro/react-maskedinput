@@ -17,7 +17,8 @@
   "files": [
     "es6",
     "lib",
-    "umd"
+    "umd",
+    "src"
   ],
   "scripts": {
     "build": "nwb build",
