@@ -12,9 +12,11 @@ const PATTERNS = [
   '1 1'
 ]
 
-const App = React.createClass({
-  getInitialState() {
-    return {
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
       card: '',
       expiry: '',
       ccv: '',
@@ -26,25 +28,25 @@ const App = React.createClass({
       pattern: '1111 1111',
       cardPattern: '1111 1111 1111 1111'
     }
-  },
+  }
 
   _onChange(e) {
     const stateChange = {}
     stateChange[e.target.name] = e.target.value
     this.setState(stateChange)
-  },
+  }
 
   _changePattern(e) {
     this.setState({pattern: e.target.value})
-  },
+  }
 
   _onCardChange(e) {
-    if(/^3[47]/.test(e.target.value)) {
-      this.setState({cardPattern: "1111 111111 11111"})
+    if (/^3[47]/.test(e.target.value)) {
+      this.setState({cardPattern: '1111 111111 11111'})
     } else {
       this.setState({cardPattern: '1111 1111 1111 1111'})
     }
-  },
+  }
 
   render() {
     return <div className="App">
@@ -111,24 +113,21 @@ const App = React.createClass({
       <footer><a href="https://github.com/insin/react-maskedinput">Source on GitHub</a></footer>
     </div>
   }
-})
+}
 
-const CustomInput = React.createClass({
-  render() {
-    return <MaskedInput
-      mask="1111-WW-11"
-      placeholder="1234-WW-12"
-      placeholderChar=" "
-      size="11"
-      {...this.props}
-      formatCharacters={{
-        'W': {
-          validate(char) { return /\w/.test(char) },
-          transform(char) { return char.toUpperCase() }
-        }
+const CustomInput = (props) =>
+  <MaskedInput
+    mask="1111-WW-11"
+    placeholder="1234-WW-12"
+    placeholderChar=" "
+    size="11"
+    {...props}
+    formatCharacters={{
+      'W': {
+        validate(char) { return /\w/.test(char) },
+        transform(char) { return char.toUpperCase() }
       }
-    }/>
-  }
-})
+    }}
+  />
 
 render(<App/>, document.getElementById('demo'))
