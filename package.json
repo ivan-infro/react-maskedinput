@@ -37,10 +37,10 @@
   },
   "devDependencies": {
     "eslint-config-jonnybuchanan": "2.0.3",
-    "nwb": "0.9.x",
+    "nwb": "^0.15.8",
+    "prop-types": "15.x.x",
     "react": "15.x.x",
-    "react-dom": "15.x.x",
-    "prop-types": "15.x.x"
+    "react-dom": "15.x.x"
   },
   "repository": {
     "type": "git",
